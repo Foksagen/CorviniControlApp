@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-          package="io.github.corvini.myapplication">
+          package="io.github.corvini.corvinicontrolapp">
 
     <uses-permission
             android:required="true"
@@ -34,7 +34,7 @@
             android:theme="@style/AppTheme">
 
         <activity
-                android:name=".MainActivity"
+                android:name="io.github.corvini.corvinicontrolapp.MainActivity"
                 android:screenOrientation="sensorLandscape">
 
             <intent-filter>

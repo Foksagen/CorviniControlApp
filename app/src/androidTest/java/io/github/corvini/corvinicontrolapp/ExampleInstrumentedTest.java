@@ -1,4 +1,4 @@
-package io.github.corvini.myapplication;
+package io.github.corvini.corvinicontrolapp;
 
 import android.content.Context;
 import androidx.test.InstrumentationRegistry;

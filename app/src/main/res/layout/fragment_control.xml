@@ -1,6 +1,280 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+		xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+		android:layout_height="match_parent">
 
-</RelativeLayout>
+	<ImageView
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:id="@+id/steering_wheel" android:contentDescription="@string/steering_wheel"
+			android:src="@drawable/steering_wheel"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			android:adjustViewBounds="true" android:layout_marginEnd="156dp"
+			app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="156dp"
+			app:layout_constraintStart_toStartOf="parent"/>
+
+	<io.github.corvini.corvinicontrolapp.views.GaugeProgress
+			android:layout_width="100dp"
+			android:layout_height="100dp"
+			android:id="@+id/batteryProgress"
+			app:layout_constraintBottom_toBottomOf="@+id/steering_wheel"
+			app:layout_constraintEnd_toEndOf="@+id/steering_wheel"
+			app:layout_constraintStart_toStartOf="@+id/steering_wheel"
+			app:layout_constraintTop_toTopOf="@+id/steering_wheel"/>
+
+	<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="42dp"
+			android:id="@+id/batteryDisplay" android:fontFamily="@font/rubik_light"
+			android:textSize="24sp"
+			app:layout_constraintTop_toTopOf="@+id/batteryProgress"
+			android:textColor="@color/colorPrimaryDark"
+			android:layout_marginTop="32dp"
+			app:layout_constraintStart_toStartOf="@+id/steering_wheel" android:layout_marginBottom="8dp"
+			app:layout_constraintBottom_toBottomOf="@+id/steering_wheel"
+			app:layout_constraintEnd_toEndOf="@+id/steering_wheel" app:layout_constraintHorizontal_bias="0.497"
+			app:layout_constraintVertical_bias="0.0" android:layout_marginStart="4dp"/>
+
+	<ImageView
+			android:id="@+id/batteryIcon"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@drawable/ic_battery"
+			android:tint="@color/colorPrimaryDark"
+			app:layout_constraintTop_toTopOf="@+id/batteryProgress"
+			app:layout_constraintBottom_toBottomOf="@+id/batteryProgress" app:layout_constraintVertical_bias="1.0"
+			app:layout_constraintStart_toStartOf="@+id/batteryProgress"
+			app:layout_constraintEnd_toEndOf="@+id/batteryProgress"/>
+
+	<ImageView
+			android:layout_width="128dp" android:layout_height="265dp"
+			android:id="@+id/pedal" android:contentDescription="@string/pedal"
+			android:src="@drawable/pedal"
+			android:layout_toEndOf="@+id/steering_wheel"
+			android:layout_marginBottom="24dp" app:layout_constraintBottom_toBottomOf="parent"
+			android:layout_marginEnd="44dp" app:layout_constraintEnd_toEndOf="parent"/>
+
+	<SeekBar
+			android:id="@+id/speed_control"
+			android:layout_width="262dp"
+			android:layout_height="41dp"
+			android:rotation="270"
+			android:layout_marginBottom="140dp" app:layout_constraintBottom_toBottomOf="parent"
+			android:progressTint="@color/colorPrimaryDark"
+			android:thumbTint="@color/colorPrimaryDark"
+			android:max="255" android:layout_marginStart="16dp" app:layout_constraintStart_toStartOf="@+id/pedal"/>
+
+	<ImageView
+			android:layout_width="39dp"
+			android:layout_height="20dp" android:src="@drawable/ic_speed_gauge"
+			android:id="@+id/speed_gauge"
+			android:tint="@color/colorPrimaryDark"
+			android:layout_marginBottom="103dp"
+			app:layout_constraintBottom_toTopOf="@+id/speed_control" android:layout_marginEnd="5.5dp"
+			app:layout_constraintEnd_toEndOf="parent"/>
+
+	<io.github.corvini.corvinicontrolapp.views.CheckableImageView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:srcCompat="@drawable/ic_gyroscope"
+			android:tint="@color/icon_tint_selector_2"
+			android:background="@drawable/background_selector_2"
+			android:padding="8dp"
+			android:id="@+id/gyro_mode"
+			android:layout_marginTop="16dp"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"/>
+
+	<io.github.corvini.corvinicontrolapp.views.CheckableImageView
+			android:layout_width="62dp"
+			android:layout_height="52dp"
+			android:layout_alignParentStart="true"
+			android:padding="8dp"
+			android:id="@+id/wheel_mode"
+			android:background="@drawable/ic_hexagon"
+			android:backgroundTint="@color/colorAccent"
+			app:srcCompat="@drawable/ic_wheel_mode_0"
+			android:tint="@color/colorPrimaryDark"
+			android:layout_marginTop="132dp"
+			app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toStartOf="@+id/steering_wheel"
+			android:layout_marginEnd="68dp"/>
+
+	<RelativeLayout
+			android:id="@+id/wheel_mode_menu"
+			android:orientation="vertical"
+			android:background="@drawable/background_menu"
+			android:backgroundTint="@color/colorPrimaryDark"
+			android:layout_width="152dp"
+			android:layout_height="56dp"
+			android:alpha="0"
+			android:visibility="gone"
+			android:clickable="false"
+			app:layout_constraintEnd_toStartOf="@+id/steering_wheel" android:layout_marginEnd="21dp"
+			app:layout_constraintBottom_toTopOf="@+id/wheel_mode">
+
+		<io.github.corvini.corvinicontrolapp.views.CheckableImageView
+				android:id="@+id/mode1"
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:background="@drawable/background_selector_1"
+				app:srcCompat="@drawable/ic_wheel_mode_0"
+				android:tint="@color/icon_tint_selector_1"
+				android:adjustViewBounds="true"
+				android:padding="7dp"
+				android:scaleX="0.9"
+				android:scaleY="0.9"
+				android:layout_alignParentTop="true" android:layout_marginTop="3dp"
+				android:layout_alignParentStart="true" android:layout_marginStart="9dp"/>
+
+		<io.github.corvini.corvinicontrolapp.views.CheckableImageView
+				android:id="@+id/mode2"
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:background="@drawable/background_selector_1"
+				app:srcCompat="@drawable/ic_wheel_mode_1"
+				android:tint="@color/icon_tint_selector_1"
+				android:adjustViewBounds="true"
+				android:padding="7dp"
+				android:scaleX="0.9"
+				android:scaleY="0.9"
+				android:layout_alignParentStart="true" android:layout_marginStart="56dp"
+				android:layout_alignParentTop="true" android:layout_marginTop="3dp"/>
+
+		<io.github.corvini.corvinicontrolapp.views.CheckableImageView
+				android:id="@+id/mode3"
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:background="@drawable/background_selector_1"
+				app:srcCompat="@drawable/ic_wheel_mode_2"
+				android:tint="@color/icon_tint_selector_1"
+				android:adjustViewBounds="true"
+				android:padding="9dp"
+				android:scaleX="0.9"
+				android:scaleY="0.9"
+				android:layout_alignParentStart="true" android:layout_marginStart="102dp" android:layout_marginTop="3dp"
+				android:layout_alignParentTop="true"/>
+
+	</RelativeLayout>
+
+	<io.github.corvini.corvinicontrolapp.views.CheckableImageView
+			android:layout_width="62dp"
+			android:layout_height="52dp"
+			android:layout_alignParentStart="true"
+			android:padding="8dp"
+			android:id="@+id/chassis_position"
+			android:background="@drawable/ic_hexagon"
+			android:backgroundTint="@color/colorAccent"
+			app:srcCompat="@drawable/ic_chassis_position_0"
+			android:tint="@color/colorPrimaryDark"
+			android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/wheel_mode"
+			app:layout_constraintEnd_toStartOf="@+id/steering_wheel" android:layout_marginEnd="68dp"/>
+
+	<RelativeLayout
+			android:id="@+id/chassis_position_menu"
+			android:orientation="vertical"
+			android:background="@drawable/background_menu"
+			android:backgroundTint="@color/colorPrimaryDark"
+			android:layout_width="152dp"
+			android:layout_height="56dp"
+			android:alpha="0"
+			android:visibility="gone"
+			android:clickable="false"
+			app:layout_constraintBottom_toTopOf="@+id/chassis_position"
+			app:layout_constraintEnd_toStartOf="@+id/steering_wheel" android:layout_marginEnd="21dp">
+
+		<SeekBar
+				android:id="@+id/position_slider"
+				android:layout_width="match_parent"
+				style="@style/Widget.AppCompat.SeekBar.Discrete"
+				android:progressTint="@color/colorAccent"
+				android:thumbTint="@color/colorAccent"
+				android:tickMark="@color/colorPrimaryLight"
+				android:layout_height="46dp"
+				android:max="8"/>
+
+	</RelativeLayout>
+
+	<io.github.corvini.corvinicontrolapp.views.CheckableImageView
+			android:layout_width="62dp"
+			android:layout_height="52dp"
+			android:layout_alignParentStart="true"
+			android:paddingStart="12dp"
+			android:paddingEnd="14dp"
+			android:paddingTop="14dp"
+			android:paddingBottom="14dp"
+			android:id="@+id/light_state"
+			android:background="@drawable/ic_hexagon"
+			android:backgroundTint="@color/colorAccent"
+			app:srcCompat="@drawable/ic_light_state_0"
+			android:tint="@color/colorPrimaryDark"
+			android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/chassis_position"
+			app:layout_constraintEnd_toStartOf="@+id/steering_wheel" android:layout_marginEnd="68dp"/>
+
+	<RelativeLayout
+			android:id="@+id/light_state_menu"
+					android:orientation="vertical"
+					android:background="@drawable/background_menu"
+					android:backgroundTint="@color/colorPrimaryDark"
+					android:layout_width="152dp"
+					android:layout_height="56dp"
+					android:alpha="0"
+					android:visibility="gone"
+					android:clickable="false"
+					app:layout_constraintBottom_toTopOf="@+id/light_state"
+					app:layout_constraintEnd_toStartOf="@+id/steering_wheel" android:layout_marginEnd="21dp">
+
+		<io.github.corvini.corvinicontrolapp.views.CheckableImageView
+				android:id="@+id/state1"
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:background="@drawable/background_selector_1"
+				app:srcCompat="@drawable/ic_light_state_0"
+				android:tint="@color/icon_tint_selector_1"
+				android:adjustViewBounds="true"
+				android:paddingStart="10dp"
+				android:paddingEnd="11dp"
+				android:paddingTop="11dp"
+				android:paddingBottom="11dp"
+				android:scaleX="0.9"
+				android:scaleY="0.9"
+				android:layout_alignParentTop="true" android:layout_marginTop="3dp"
+				android:layout_alignParentStart="true" android:layout_marginStart="9dp"/>
+
+		<io.github.corvini.corvinicontrolapp.views.CheckableImageView
+				android:id="@+id/state2"
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:background="@drawable/background_selector_1"
+				app:srcCompat="@drawable/ic_light_state_1"
+				android:tint="@color/icon_tint_selector_1"
+				android:adjustViewBounds="true"
+				android:paddingStart="8dp"
+				android:paddingEnd="9dp"
+				android:paddingTop="9dp"
+				android:paddingBottom="9dp"
+				android:scaleX="0.9"
+				android:scaleY="0.9"
+				android:layout_alignParentStart="true" android:layout_marginStart="56dp"
+				android:layout_alignParentTop="true" android:layout_marginTop="3dp"/>
+
+		<io.github.corvini.corvinicontrolapp.views.CheckableImageView
+				android:id="@+id/state3"
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:background="@drawable/background_selector_1"
+				app:srcCompat="@drawable/ic_light_state_2"
+				android:tint="@color/icon_tint_selector_1"
+				android:adjustViewBounds="true"
+				android:paddingStart="8dp"
+				android:paddingEnd="9dp"
+				android:paddingTop="9dp"
+				android:paddingBottom="9dp"
+				android:scaleX="0.9"
+				android:scaleY="0.9"
+				android:layout_alignParentStart="true" android:layout_marginStart="102dp" android:layout_marginTop="3dp"
+				android:layout_alignParentTop="true"/>
+
+	</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,5 @@
 <resources>
-	<string name="app_name">My Application</string>
+	<string name="app_name">Corvini Control</string>
 	<string name="steering_wheel">Steering Wheel</string>
 	<string name="pedal">Pedal</string>
 	<string name="connection_button">Connection Button</string>
